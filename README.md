@@ -28,14 +28,15 @@ This repository contains AWS CloudFormation templates for deploying a network in
    aws cloudformation create-stack --stack-name shared-system-network --template-body file://templates/vpc-template.yaml --parameters file://parameters/shared-system-network-params.json --capabilities CAPABILITY_IAM
 
 ## Deploy dev-system-network VPC:
+```bash
 aws cloudformation create-stack --stack-name dev-system-network --template-body file://templates/vpc-template.yaml --parameters file://parameters/dev-system-network-params.json --capabilities CAPABILITY_IAM
 
 ## Create VPC peering:
-
+```bash
 aws cloudformation create-stack --stack-name vpc-peering --template-body file://templates/vpc-peering-template.yaml --parameters file://parameters/vpc-peering-params.json --capabilities CAPABILITY_IAM
 
 ## Deploy VPN client:
-
+```bash
 aws cloudformation create-stack --stack-name vpn-client --template-body file://templates/vpn-client-template.yaml --parameters file://parameters/vpn-client-params.json --capabilities CAPABILITY_IAM
 
 ## Deploy RDS instance:
