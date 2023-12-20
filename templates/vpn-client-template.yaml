@@ -1,0 +1,17 @@
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: "ID of the VPC where VPN Client will be associated"
+
+Resources:
+  MyVPNClient:
+    Type: AWS::EC2::ClientVpnEndpoint
+    Properties:
+      AuthenticationOptions:
+        - Type: certificate-authentication
+          MutualAuthentication:
+            ClientRootCertificateChainArn: "arn:aws:acm:your-region:your-account-id:certificate/your-client-certificate-arn"  # Replace with actual certificate ARN
+      ClientCidrBlock: "10.200.0.0/16"  # Replace with your desired CIDR block
+      ConnectionLogOptions:
+        Enabled: true
+      VpcId: !Ref VpcId

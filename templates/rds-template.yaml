@@ -1,0 +1,44 @@
+Parameters:
+  DBName:
+    Type: String
+    Description: "Name of the database"
+  MasterUsername:
+    Type: String
+    Description: "Username for the master DB user"
+  MasterUserPassword:
+    Type: String
+    Description: "Password for the master DB user"
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: "ID of the VPC where RDS will be deployed"
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: "List of private subnet IDs where RDS will be deployed"
+
+Resources:
+  MyDBCluster:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      Engine: aurora
+      EngineMode: serverless
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterUserPassword
+      DBClusterIdentifier: "my-db-cluster"
+      DatabaseName: !Ref DBName
+      VpcSecurityGroupIds:
+        - !Ref RDSSecurityGroup
+      AvailabilityZones: !Ref SubnetIds
+      DBSubnetGroupName: "my-db-subnet-group"
+
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Security group for RDS"
+      VpcId: !Ref VpcId
+
+  RDSIngressRule:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref RDSSecurityGroup
+      IpProtocol: -1
+      SourceSecurityGroupId: !Ref RDSSecurityGroup

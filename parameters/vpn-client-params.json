@@ -1,0 +1,7 @@
+[
+    {
+      "ParameterKey": "VpcId",
+      "ParameterValue": "your-shared-system-network-vpc-id"  // Replace with the VPCId of the shared system network
+    }
+  ]
+  

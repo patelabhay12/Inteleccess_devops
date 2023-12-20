@@ -1,0 +1,13 @@
+[
+    {
+      "ParameterKey": "VPCId",
+      "ParameterValue": "your-vpc-id" // Replace with the VPCId of the first VPC
+    },
+    {
+      "ParameterKey": "PeerVPCId",
+      "ParameterValue": "your-peer-vpc-id"  // Replace with the VPCId of the second VPC
+    }
+  ]
+  
+
+

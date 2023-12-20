@@ -1,0 +1,12 @@
+Parameters:
+  PeerVPCId:
+    Type: String
+    Description: "ID of the peer VPC"
+
+Resources:
+  VpcPeeringConnection:
+    Type: AWS::EC2::VPCPeeringConnection
+    Properties:
+      VpcId: !Ref VPCId  # The VPCId of the peering connection should be from the peer VPC
+      PeerVpcId: !Ref PeerVPCId
+      PeerRegion: !Ref AWS::Region

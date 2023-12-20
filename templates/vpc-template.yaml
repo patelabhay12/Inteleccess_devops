@@ -1,0 +1,36 @@
+Parameters:
+  VpcCidr:
+    Type: String
+    Description: "CIDR block for the VPC"
+
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCidr
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: MyVPC
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: !Select [0, !Cidr, !Ref VpcCidr, 256, 8]
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      MapPublicIpOnLaunch: true
+
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: !Select [1, !Cidr, !Ref VpcCidr, 256, 8]
+      AvailabilityZone: !Select [0, !GetAZs "]
+
+  VpcPeeringConnection:
+    Type: AWS::EC2::VPCPeeringConnection
+    Properties:
+      VpcId: !Ref MyVPC
+      PeerVpcId: !Ref PeerVPCId  # You will need to pass this parameter when creating the stack

@@ -1,0 +1,23 @@
+[
+    {
+      "ParameterKey": "DBName",
+      "ParameterValue": "your-db-name"  // Replace with your desired DB name
+    },
+    {
+      "ParameterKey": "MasterUsername",
+      "ParameterValue": "your-master-username"  // Replace with your desired master username
+    },
+    {
+      "ParameterKey": "MasterUserPassword",
+      "ParameterValue": "your-master-password"  // Replace with your desired master password
+    },
+    {
+      "ParameterKey": "VpcId",
+      "ParameterValue": "your-dev-system-network-vpc-id"  //Replace with the VPCId of the dev-system-network
+    },
+    {
+      "ParameterKey": "SubnetIds",
+      "ParameterValue": "your-private-subnet-ids"  // Replace with comma-separated private subnet IDs of dev-system-network
+    }
+  ]
+  
