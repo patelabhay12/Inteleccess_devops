@@ -28,22 +28,29 @@ This repository contains AWS CloudFormation templates for deploying a network in
    aws cloudformation create-stack --stack-name shared-system-network --template-body file://templates/vpc-template.yaml --parameters file://parameters/shared-system-network-params.json --capabilities CAPABILITY_IAM
 
 2. Deploy dev-system-network VPC:
-```bash
-aws cloudformation create-stack --stack-name dev-system-network --template-body file://templates/vpc-template.yaml --parameters file://parameters/dev-system-network-params.json --capabilities CAPABILITY_IAM
+   ```bash
+   aws cloudformation create-stack --stack-name dev-system-network --template-body file://templates/vpc-template.yaml -- 
+   parameters file://parameters/dev-system-network-params.json --capabilities CAPABILITY_IAM
 
 3. Create VPC peering:
-```bash
-aws cloudformation create-stack --stack-name vpc-peering --template-body file://templates/vpc-peering-template.yaml --parameters file://parameters/vpc-peering-params.json --capabilities CAPABILITY_IAM
+   ```bash
+   aws cloudformation create-stack --stack-name vpc-peering --template-body file://templates/vpc-peering-template.yaml -- 
+   parameters file://parameters/vpc-peering-params.json --capabilities CAPABILITY_IAM
 
 4. Deploy VPN client:
-```bash
-aws cloudformation create-stack --stack-name vpn-client --template-body file://templates/vpn-client-template.yaml --parameters file://parameters/vpn-client-params.json --capabilities CAPABILITY_IAM
+   ```bash
+   aws cloudformation create-stack --stack-name vpn-client --template-body file://templates/vpn-client-template.yaml -- 
+   parameters file://parameters/vpn-client-params.json --capabilities CAPABILITY_IAM
 
-## Deploy RDS instance:
+5. Deploy RDS instance:
+   ```bash
+   aws cloudformation create-stack --stack-name rds --template-body file://templates/rds-template.yaml --parameters 
+   file://parameters/rds-params.json --capabilities CAPABILITY_IAM
 
-aws cloudformation create-stack --stack-name rds --template-body file://templates/rds-template.yaml --parameters file://parameters/rds-params.json --capabilities CAPABILITY_IAM
+7. Install OpenVPN client:
+   ```bash
+   ./scripts/install-openvpn-client.sh
 
-## Install OpenVPN client:
-
-./scripts/install-openvpn-client.sh
-
+## Name - Abhay Patel
+## Roll Number  - 2001331540001 
+## Email Id -  abhaypatel6794@gmail.com
